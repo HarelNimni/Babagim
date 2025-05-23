@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@drawable/baba_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/shawarma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="מנות שווארמה"
+                android:textColor="#A22C2C" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/shawarmaList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/falafel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="מנות פלאפל"
+                android:textColor="#A22C2C" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/falafelList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/grill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="גריל"
+                android:textColor="#A22C2C" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/grillList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/deals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="דילים"
+                android:textColor="#A22C2C" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dealsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sides"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="תוספות"
+                android:textColor="#A22C2C" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sidesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/drinks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שתייה"
+                android:textColor="#A22C2C" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/drinksList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "404527649739",
+    "project_id": "users-data-b77ea",
+    "storage_bucket": "users-data-b77ea.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404527649739:android:a791467c252416f6a0dc4e",
+        "android_client_info": {
+          "package_name": "harel.nimni.babagim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBrw41BNEHnqUyJPBgXD7UeyuX2f1Cwng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

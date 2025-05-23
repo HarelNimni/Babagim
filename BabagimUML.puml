@@ -1,0 +1,385 @@
+@startuml
+class harel.nimni.babagim.HomeFragment {
+- ArrayList<Item> shawarmaData
+- RecyclerView shawarmaList
+- ArrayList<Item> falafelData
+- RecyclerView falafelList
+- ArrayList<Item> grillData
+- RecyclerView grillList
+- ArrayList<Item> dealsData
+- RecyclerView dealsList
+- ArrayList<Item> sidesData
+- RecyclerView sidesList
+- ArrayList<Item> drinksData
+- RecyclerView drinksList
+- RecyclerCustomAdapterMenu RecyclerAdapter
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void createList(ArrayList<Item>,DatabaseReference,String,HomeScreen.CallBackItems)
+- void shawarmaListListener()
+- void falafelListListener()
+- void grillListListener()
+- void dealsListListener()
+- void sidesListListener()
+- void drinksListListener()
+}
+
+
+class harel.nimni.babagim.MainActivity {
+- ImageView logo
+# void onCreate(Bundle)
+}
+
+
+class harel.nimni.babagim.SignUp {
+- TextView moveToLogin
+- EditText username
+- EditText password
+- EditText phoneNumber
+- EditText confirmedPassword
+- Button signUp
+- ArrayList<User> usersData
+# void onCreate(Bundle)
++ boolean checkUserExistnace(ArrayList<User>,String,String)
++ boolean isValidPhone(String)
++ boolean checkUser(ArrayList<User>,User,String)
+- void signUpListener()
+- void setId()
+}
+
+
+class harel.nimni.babagim.ChangePassword {
+- EditText newPassword
+- EditText confirmedNewPassword
+- Button setBtn
+- TextView moveToLogin
+- TextView moveToSignUp
+- ArrayList<User> usersData
+# void onCreate(Bundle)
++ boolean checkPasswordExistnace(ArrayList<User>,String)
++ void updatePassword()
+- void setId()
+- void setBtnListener()
+}
+
+
+class harel.nimni.babagim.EndScreen {
+- TextView earnedPoints
+- Button restartBtn
+- Button shareBtn
+- Button saveBtn
+- EditText orderName
+- Button verifyBtn
+- ActivityResultLauncher<Intent> contactPickerLauncher
+# void onCreate(Bundle)
++ boolean checkNameExistence(String,ArrayList<Order>)
+# void initActivityLauncher()
+}
+
+
+class harel.nimni.babagim.User {
+- String username
+- String password
+- String phoneNumber
+- int points
+- ArrayList<Order> savedOrders
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ String getPhoneNumber()
++ void setPhoneNumber(String)
++ int getPoints()
++ void setPoints(int)
++ void addPoints(int)
++ void removePoints(int)
++ ArrayList<Order> getSavedOrders()
++ void addOrder(Order)
++ String toString()
+}
+
+
+class harel.nimni.babagim.ForgotPassword {
+- EditText phoneNumber
+- EditText enterCode
+- Button sendSms
+- TextView moveToLogin
+- TextView moveToSignUp
+- ArrayList<User> usersData
+# void onCreate(Bundle)
++ boolean phoneIsExist(String,ArrayList<User>)
++ String sendCodeToSms()
++ void checkCode()
++ void onRequestPermissionsResult(int,String[],int[])
+- void sendSmsListener()
+- void setId()
+}
+
+
+class harel.nimni.babagim.PaymentScreen {
+- SeekBar pointsSeekBar
+- Button payBtn
+- TextView maxValuePoints
+- TextView redeemedPoints
+- RecyclerView orderList
+- RecyclerCustomAdapterOrder orderAdapter
++ {static} int newPrice
+- Button closeBtn
+- TextView itemDetails
+# void onCreate(Bundle)
++ {static} void setUserInFireBase(User)
+}
+
+
+class harel.nimni.babagim.EditItem {
+- ImageView itemImage
+- LinearLayout toppingsButtons
+- ArrayList<String> toppings
+- Switch moreMeatSwitch
+- RadioGroup meatTypes
+- TextView chooseMeatMessage
+- Button addItemBtn
+- Item curItem
+# void onCreate(Bundle)
++ {static} void setToppingsData(ArrayList<String>,ToppingsCallBack)
++ {static} void findItemByName(Item,String,ItemCallBack)
+}
+
+
+interface harel.nimni.babagim.EditItem$ToppingsCallBack {
+~ void onSuccess(ArrayList<String>)
+~ void onFailure(String)
+}
+
+interface harel.nimni.babagim.EditItem$ItemCallBack {
+~ void onSuccess(Item)
+~ void onFailure(String)
+}
+
+class harel.nimni.babagim.AddOrder {
+- RecyclerView savedOrderList
+- RecyclerCustomAdapterOrder adapter
+- Button addToOrder
+- TextView itemDetails
+- Button closeBtn
+# void onCreate(Bundle)
+}
+
+
+class harel.nimni.babagim.RecyclerCustomAdapterMenu {
+- ArrayList<Item> itemsData
+- OnMenuClickListener listener
+- ArrayList<ArrayList<Integer>> images
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
+}
+
+
+interface harel.nimni.babagim.RecyclerCustomAdapterMenu$OnMenuClickListener {
+~ void onItemClick(int)
+}
+
+class harel.nimni.babagim.RecyclerCustomAdapterMenu$ViewHolder {
+- ImageView itemImage
+- TextView itemName
+- TextView countOfPepole
+- TextView price
+- ImageView veganSign
+}
+
+class harel.nimni.babagim.Order {
+- ArrayList<Item> userItems
+- ArrayList<Integer> orderImages
+- String orderName
++ ArrayList<Item> getUserItems()
++ Item getItem(int)
++ void addItem(Item)
++ int getSize()
++ ArrayList<Integer> getOrderImages()
++ void setOrderImages(ArrayList<Integer>)
++ String getOrderName()
++ void setOrderName(String)
++ void addImage(int)
++ int calcPrice()
++ void removeItem(int)
+- String checkMeatType(int)
++ String toString()
+}
+
+
+class harel.nimni.babagim.HomeScreen {
+- TextView name
+- TextView points
++ {static} Button payment
+- ImageButton tiktok
+- ImageButton instegram
+- ImageButton facebook
+- ArrayList<User> usersData
++ {static} User curUser
++ {static} Order order
+- ViewPagerAdapter fragmentAdapter
+- ViewPager2 viewPager
+- TabLayout tabLayout
+# void onCreate(Bundle)
+# void onResume()
++ User findUserByPhone(String,ArrayList<User>)
+- void setId()
+- void setFragments()
+}
+
+
+interface harel.nimni.babagim.HomeScreen$CallBackItems {
+~ void onSuccess(ArrayList<Item>)
+~ void onFailure(String)
+}
+
+class harel.nimni.babagim.ViewPagerAdapter {
+- ArrayList<Fragment> fragments
++ Fragment createFragment(int)
++ int getItemCount()
++ void addFragment(Fragment)
+}
+
+
+class harel.nimni.babagim.Item {
+- String name
+- ArrayList<String> toppings
+- int countOfPepole
+- int price
+- boolean isVeggie
+- boolean moreMeat
+- boolean chicken
+- boolean veal
+- boolean hodu
+- boolean mix
+- String type
+~ int vealPrice
+~ int hoduPrice
+~ int mixPrice
+~ int moreMeatPrice
++ String getName()
++ void setName(String)
++ String getTop(int)
++ ArrayList<String> getToppings()
++ void addTopping(String)
++ int getCountOfPepole()
++ void setCountOfPepole(int)
++ int getPrice()
++ void setPrice(int)
++ boolean isVeggie()
++ void setVeggie(boolean)
++ boolean isMoreMeat()
++ void setMoreMeat(boolean)
++ boolean isChicken()
++ void setChicken(boolean)
++ boolean isVeal()
++ void setVeal(boolean)
++ boolean isHodu()
++ void setHodu(boolean)
++ boolean isMix()
++ void setMix(boolean)
++ String getType()
++ void setType(String)
++ String toString()
+}
+
+
+class harel.nimni.babagim.OrdersFragment {
+- ListView savedOrdersList
+- ArrayList<String> ordersName
+- TextView emptyMessage
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+
+
+class harel.nimni.babagim.PersonalizeFragment {
+- Spinner countOfPepoleInOrder
+- String[] options
+- SeekBar pricePerPerson
+- TextView chosenPrice
+- ArrayList<Item> filteredItems
+- ArrayList<Integer> filteredImages
+- Button generateBtn
+- CheckBox veganOption
+- CheckBox sharingOption
+- RecyclerView filteredList
+- ArrayList<Item> menu
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void generateBtnListener()
++ void insertMenuData(ArrayList<Item>,HomeScreen.CallBackItems)
++ void filterData(ArrayList<Item>,ArrayList<Item>,ArrayList<Integer>,Boolean,Boolean,int,int)
++ int findImage(String,int)
+}
+
+
+class harel.nimni.babagim.Login {
+- TextView moveToSignUp
+- TextView moveToForgotPassword
+- Button login
+- EditText phoneNumber
+- EditText password
+- ArrayList<User> usersData
+# void onCreate(Bundle)
++ int checkExistnace(ArrayList<User>,String,String)
+- void setId()
+- void loginListener()
+}
+
+
+class harel.nimni.babagim.RecyclerCustomAdapterOrder {
+- ArrayList<Item> itemsData
+- ArrayList<Integer> images
+- OnOrderClickListener listener
++ RecyclerCustomAdapterOrder.ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(RecyclerCustomAdapterOrder.ViewHolder,int)
++ void remove(int)
++ int getItemCount()
+}
+
+
+interface harel.nimni.babagim.RecyclerCustomAdapterOrder$OnOrderClickListener {
+~ void onItemClick(int)
+}
+
+class harel.nimni.babagim.RecyclerCustomAdapterOrder$ViewHolder {
+- ImageView itemImage
+- TextView itemName
+- TextView countOfPepole
+- TextView price
+- ImageView veganSign
+}
+
+
+
+androidx.fragment.app.Fragment <|-- harel.nimni.babagim.HomeFragment
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.SignUp
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.ChangePassword
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.EndScreen
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.ForgotPassword
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.PaymentScreen
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.EditItem
+harel.nimni.babagim.EditItem +.. harel.nimni.babagim.EditItem$ToppingsCallBack
+harel.nimni.babagim.EditItem +.. harel.nimni.babagim.EditItem$ItemCallBack
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.AddOrder
+harel.nimni.babagim.Adapter <|-- harel.nimni.babagim.RecyclerCustomAdapterMenu
+harel.nimni.babagim.RecyclerCustomAdapterMenu +.. harel.nimni.babagim.RecyclerCustomAdapterMenu$OnMenuClickListener
+harel.nimni.babagim.RecyclerCustomAdapterMenu +.. harel.nimni.babagim.RecyclerCustomAdapterMenu$ViewHolder
+harel.nimni.babagim.ViewHolder <|-- harel.nimni.babagim.RecyclerCustomAdapterMenu$ViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.HomeScreen
+harel.nimni.babagim.HomeScreen +.. harel.nimni.babagim.HomeScreen$CallBackItems
+androidx.viewpager2.adapter.FragmentStateAdapter <|-- harel.nimni.babagim.ViewPagerAdapter
+androidx.fragment.app.Fragment <|-- harel.nimni.babagim.OrdersFragment
+androidx.fragment.app.Fragment <|-- harel.nimni.babagim.PersonalizeFragment
+androidx.appcompat.app.AppCompatActivity <|-- harel.nimni.babagim.Login
+harel.nimni.babagim.Adapter <|-- harel.nimni.babagim.RecyclerCustomAdapterOrder
+harel.nimni.babagim.RecyclerCustomAdapterOrder +.. harel.nimni.babagim.RecyclerCustomAdapterOrder$OnOrderClickListener
+harel.nimni.babagim.RecyclerCustomAdapterOrder +.. harel.nimni.babagim.RecyclerCustomAdapterOrder$ViewHolder
+harel.nimni.babagim.ViewHolder <|-- harel.nimni.babagim.RecyclerCustomAdapterOrder$ViewHolder
+@enduml

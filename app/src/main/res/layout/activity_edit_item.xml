@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditItem"
+    android:background="@drawable/baba_background">
+
+    <ImageView
+        android:id="@+id/currentItemPhoto"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/baba_logo"
+        android:layout_gravity="center"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/chooseToppings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="בחר תוספות:"
+                android:textColor="#A22C2C"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toppingsList"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/chooseMeatType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="בחר סוג בשר"
+                android:textColor="#A22C2C"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/meatType">
+
+                <RadioButton
+                    android:id="@+id/chickenBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="פרגית (+0)" />
+
+                <RadioButton
+                    android:id="@+id/vealBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="עגל (+5)" />
+
+                <RadioButton
+                    android:id="@+id/HoduBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="הודו (+5)" />
+
+                <RadioButton
+                    android:id="@+id/mixBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="מיקס (+3)" />
+            </RadioGroup>
+
+            <Switch
+                android:id="@+id/moreMeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="אקסטרה בשר? (+10)" />
+
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="הוסף"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonalizeFragment"
+    android:background="@drawable/baba_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chosenPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="מחיר לאדם:"
+            android:textColor="#A22C2C" />
+
+        <SeekBar
+            android:id="@+id/pricePerPersonBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="105"/>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="כמה אתם?"
+            android:textColor="#A22C2C"/>
+
+        <Spinner
+            android:id="@+id/countOfPepoleInOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/veganOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="טבעוני?" />
+
+        <CheckBox
+            android:id="@+id/sharingOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="חולקים?" />
+
+        <Button
+            android:id="@+id/generateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="עיבוד"
+            android:background="@drawable/custom_button"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/filteredList"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>
